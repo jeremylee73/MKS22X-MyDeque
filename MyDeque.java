@@ -21,7 +21,12 @@ public class MyDeque<E>{
   }
 
   public String toString(){
-    return "";
+    String ans = "";
+    for (int i=0; i<size-1; i++){
+      ans += data[i] + ",";
+    }
+    ans += data[size-1];
+    return ans;
   }
 
   public void addFirst(E element){
