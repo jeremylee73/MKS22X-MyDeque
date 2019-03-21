@@ -51,6 +51,8 @@ public class MyDeque<E>{
         count++;
       }
     }
+    start = 0;
+    end = size - 1;
     size = size * 2;
     data = newData;
   }
@@ -61,7 +63,11 @@ public class MyDeque<E>{
   }
 
   public void addLast(E element){
-
+    if (end == size - 1 || end == start - 1){
+      resize();
+    }
+    end++;
+    data[end] = element;
   }
 
   public E removeFirst(){
