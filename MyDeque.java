@@ -25,10 +25,24 @@ public class MyDeque<E>{
 
   public String toString(){
     String ans = "{";
-    for (int i=0; i<size-1; i++){
-      ans += data[i] + " ";
+    if (start == end){
+      return "{}";
     }
-    ans += data[size-1] + "}";
+    if (end > start){
+      for (int i=start; i<end-1; i++){
+        ans += data[i] + " ";
+      }
+      ans += data[end-1];
+    } else {
+      for (int i=start; i<size; i++){
+        ans += data[i] + " ";
+      }
+      for (int i=0; i<end-1; i++){
+        ans += data[i] + " ";
+      }
+      ans += data[end-1];
+    }
+    ans += "}";
     return ans;
   }
 
