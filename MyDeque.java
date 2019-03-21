@@ -73,11 +73,11 @@ public class MyDeque<E>{
   }
 
   public E getFirst(){
-    return data[0];
+    return data[start];
   }
 
   public E getLast(){
-    return data[0];
+    return data[end];
   }
 
   public static void main(String[] args){
