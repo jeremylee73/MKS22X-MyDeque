@@ -5,6 +5,9 @@ public class MyDeque<E>{
   @SuppressWarnings("unchecked")
   public MyDeque(){
     data = (E[])new Object[10];
+    size = 10;
+    start = 0;
+    end = size-1;
   }
 
   public MyDeque(int initialCapacity){
@@ -29,6 +32,29 @@ public class MyDeque<E>{
     return ans;
   }
 
+  private void resize(){
+    @SuppressWarnings("unchecked")
+    E[] newData = (E[])new Object[size*2];
+    int count = 0;
+    if (end >= start){
+      for (int i=start; i<=end; i++){
+        newData[count] = data[i];
+        count++;
+      }
+    } else {
+      for (int i=start; i<size; i++){
+        newData[count] = data[i];
+        count++;
+      }
+      for (int i=0; i<=end; i++){
+        newData[count] = data[i];
+        count++;
+      }
+    }
+    size = size * 2;
+    data = newData;
+  }
+
   public void addFirst(E element){
 
   }
@@ -51,5 +77,10 @@ public class MyDeque<E>{
 
   public E getLast(){
     return data[0];
+  }
+
+  public static void main(String[] args){
+    MyDeque<Integer> test = new MyDeque<Integer>();
+    System.out.println(test);
   }
 }
