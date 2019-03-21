@@ -82,5 +82,7 @@ public class MyDeque<E>{
   public static void main(String[] args){
     MyDeque<Integer> test = new MyDeque<Integer>();
     System.out.println(test);
+    test.resize();
+    System.out.println(test);
   }
 }
