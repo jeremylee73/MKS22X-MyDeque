@@ -7,7 +7,7 @@ public class MyDeque<E>{
     data = (E[])new Object[10];
     size = 10;
     start = 0;
-    end = size-1;
+    end = 0;
   }
 
   public MyDeque(int initialCapacity){
@@ -16,7 +16,7 @@ public class MyDeque<E>{
     E[] d = (E[])new Object[size];
     data = d;
     start = 0;
-    end = size - 1;
+    end = 0;
   }
 
   public int size(){
@@ -37,7 +37,7 @@ public class MyDeque<E>{
     E[] newData = (E[])new Object[size*2];
     int count = 0;
     if (end >= start){
-      for (int i=start; i<=end; i++){
+      for (int i=start; i<end; i++){
         newData[count] = data[i];
         count++;
       }
@@ -46,28 +46,39 @@ public class MyDeque<E>{
         newData[count] = data[i];
         count++;
       }
-      for (int i=0; i<=end; i++){
+      for (int i=0; i<end; i++){
         newData[count] = data[i];
         count++;
       }
     }
     start = 0;
-    end = size - 1;
+    end = size;
     size = size * 2;
     data = newData;
   }
 
   public void addFirst(E element){
-    data[start] = null;
-    start++;
+    if (end - start == size){
+      resize();
+    }
+    if (start == 0){
+      for (int i=end; i>=1; i--){
+        data[i] = data[i-1];
+      }
+      data[0] = null;
+      start++;
+      end++;
+    }
+    start--;
+    data[start] = element;
   }
 
   public void addLast(E element){
-    if (end == size - 1 || end == start - 1){
+    if (end == size || end == start){
       resize();
     }
     end++;
-    data[end] = element;
+    data[end-1] = element;
   }
 
   public E removeFirst(){
@@ -82,12 +93,12 @@ public class MyDeque<E>{
   }
 
   public E removeLast(){
-    E temp = data[end];
-    data[end] = null;
-    if (end != 0){
+    E temp = data[end-1];
+    data[end-1] = null;
+    if (end != 1){
       end--;
     } else {
-      end = size - 1;
+      end = size;
     }
     return temp;
   }
@@ -97,13 +108,17 @@ public class MyDeque<E>{
   }
 
   public E getLast(){
-    return data[end];
+    return data[end-1];
   }
 
   public static void main(String[] args){
     MyDeque<Integer> test = new MyDeque<Integer>();
     System.out.println(test);
-    test.resize();
+    test.addFirst(2);
+    for (int i=0; i<10; i++){
+      test.addLast(3);
+    }
+    System.out.println("Start:"+test.start+" End:"+test.end);
     System.out.println(test);
   }
 }
