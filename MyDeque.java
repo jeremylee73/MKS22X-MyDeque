@@ -24,11 +24,11 @@ public class MyDeque<E>{
   }
 
   public String toString(){
-    String ans = "";
+    String ans = "{";
     for (int i=0; i<size-1; i++){
-      ans += data[i] + ",";
+      ans += data[i] + " ";
     }
-    ans += data[size-1];
+    ans += data[size-1] + "}";
     return ans;
   }
 
@@ -56,7 +56,8 @@ public class MyDeque<E>{
   }
 
   public void addFirst(E element){
-
+    data[start] = null;
+    start++;
   }
 
   public void addLast(E element){
