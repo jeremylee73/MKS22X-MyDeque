@@ -33,18 +33,16 @@ public class MyDeque<E>{
       return "{}";
     }
     if (end > start){
-      for (int i=start; i<end-1; i++){
+      for (int i=start; i<end; i++){
         ans += data[i] + " ";
       }
-      ans += data[end-1];
     } else {
       for (int i=start; i<size; i++){
         ans += data[i] + " ";
       }
-      for (int i=0; i<end-1; i++){
+      for (int i=0; i<end; i++){
         ans += data[i] + " ";
       }
-      ans += data[end-1];
     }
     ans += "}";
     return ans;
