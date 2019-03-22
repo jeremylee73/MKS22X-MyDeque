@@ -77,19 +77,24 @@ public class MyDeque<E>{
     if (element == null){
       throw new NullPointerException();
     }
-    if (end == size || end == start){
-      resize();
-    }
-    if (start == 0){
-      for (int i=end; i>=1; i--){
-        data[i] = data[i-1];
-      }
-      data[0] = null;
-      start++;
+    if (size() == 0){
       end++;
+      data[end-1] = element;
+    } else {
+      if (end == size || end == start){
+        resize();
+      }
+      if (start == 0){
+        for (int i=end; i>=1; i--){
+          data[i] = data[i-1];
+        }
+        data[0] = null;
+        start++;
+        end++;
+      }
+      start--;
+      data[start] = element;
     }
-    start--;
-    data[start] = element;
   }
 
   public void addLast(E element){
