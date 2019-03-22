@@ -123,16 +123,12 @@ public class MyDeque<E>{
   }
 
   public E removeLast(){
-    if (start == end){
+    if (size() == 0){
       throw new NoSuchElementException();
     }
     E temp = data[end-1];
     data[end-1] = null;
-    if (end != 1){
-      end--;
-    } else {
-      end = size;
-    }
+    end--;
     return temp;
   }
 
