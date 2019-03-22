@@ -21,7 +21,10 @@ public class MyDeque<E>{
   }
 
   public int size(){
-    return size;
+    if (end >= start){
+      return end - start;
+    }
+    return (size - end) + start;
   }
 
   public String toString(){
