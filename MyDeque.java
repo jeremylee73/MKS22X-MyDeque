@@ -24,7 +24,7 @@ public class MyDeque<E>{
     if (end >= start){
       return end - start;
     }
-    return (size - end) + start;
+    return (size - start) + end;
   }
 
   public String toString(){
@@ -67,8 +67,9 @@ public class MyDeque<E>{
         count++;
       }
     }
+    int interval = size();
     start = 0;
-    end = size;
+    end = start + interval;
     size = size * 2;
     data = newData;
   }
@@ -101,20 +102,20 @@ public class MyDeque<E>{
     if (element == null){
       throw new NullPointerException();
     }
-    if (size() == 0){
-      end++;
-      data[end-1] = element;
+    if (size() == size){
+      resize();
+    }
+    if (end == size - 1){
+      data[end] = element;
+      end = 0;
     } else {
-      if (end == size || end == start){
-        resize();
-      }
+      data[end] = element;
       end++;
-      data[end-1] = element;
     }
   }
 
   public E removeFirst(){
-    if (start == end){
+    if (size() == 0){
       throw new NoSuchElementException();
     }
     E temp = data[start];

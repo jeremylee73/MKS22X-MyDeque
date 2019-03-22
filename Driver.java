@@ -144,91 +144,93 @@ public class Driver {
 			}
 		}
 
-		// // adding backward past capacity
-		//
-		// deque = new MyDeque<>();
-		// comp = new ArrayDeque<>();
-		//
-		// for (int i = 0; i < 1000; i++) {
-		// 	String old = gist_string(deque);
-		// 	try {
-		// 		deque.addFirst(i);
-		// 		comp.addFirst(i);
-		// 		if (!edge_check(comp, deque)) {
-		// 			out.add(message(old+".addFirst("+i+")", gist_string(comp), gist_string(deque)));
-		// 			break;
-		// 		}
-		// 		if (comp.size() != deque.size()) {
-		// 			out.add(message(old+".addFirst("+i+")\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
-		// 			break;
-		// 		}
-		// 	} catch (Exception e) {
-		// 		out.add(message(old+".addFirst("+i+")", gist_string(comp), e.toString()));
-		// 		break;
-		// 	}
-		// }
-		//
-		// // removing from front without wrap
-		//
-		// for (int i = 0; i < 1000; i++) {
-		// 	String old = gist_string(deque);
-		// 	try {
-		// 		deque.removeFirst();
-		// 		comp.removeFirst();
-		// 		if (!edge_check(comp, deque)) {
-		// 			out.add(message(old+".removeFirst()", gist_string(comp), gist_string(deque)));
-		// 			break;
-		// 		}
-		// 		if (comp.size() != deque.size()) {
-		// 			out.add(message(old+".removeFirst()\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
-		// 			break;
-		// 		}
-		// 	} catch (Exception e) {
-		// 		out.add(message(old+".removeFirst()", gist_string(comp), e.toString()));
-		// 		break;
-		// 	}
-		// }
-		//
-		// // stepping forwards -- this should place us somewhere in the middle of the data array
-		//
-		// deque = new MyDeque<>();
-		// comp = new ArrayDeque<>();
-		//
-		// for (int i = 0; i < 500; i++) {
-		// 	String old = gist_string(deque);
-		// 	try {
-		// 		deque.addLast(i);
-		// 		comp.addLast(i);
-		// 		if (!edge_check(comp, deque)) {
-		// 			out.add(message(old+".addLast("+i+")", gist_string(comp), gist_string(deque)));
-		// 			break;
-		// 		}
-		// 		if (comp.size() != deque.size()) {
-		// 			out.add(message(old+".addLast("+i+")\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
-		// 			break;
-		// 		}
-		// 	} catch (Exception e) {
-		// 		out.add(message(old+".addLast("+i+")", gist_string(comp), e.toString()));
-		// 		break;
-		// 	}
-		// 	old = gist_string(deque);
-		// 	try {
-		// 		deque.removeFirst();
-		// 		comp.removeFirst();
-		// 		if (!edge_check(comp, deque)) {
-		// 			out.add(message(old+".removeFirst()", gist_string(comp), gist_string(deque)));
-		// 			break;
-		// 		}
-		// 		if (comp.size() != deque.size()) {
-		// 			out.add(message(old+".removeFirst()\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
-		// 			break;
-		// 		}
-		// 	} catch (Exception e) {
-		// 		out.add(message(old+".removeFirst()", gist_string(comp), e.toString()));
-		// 		break;
-		// 	}
-		// }
-		//
+		// adding backward past capacity
+
+		deque = new MyDeque<>();
+		comp = new ArrayDeque<>();
+
+		for (int i = 0; i < 1000; i++) {
+			String old = gist_string(deque);
+			try {
+				deque.addFirst(i);
+				comp.addFirst(i);
+				if (!edge_check(comp, deque)) {
+					out.add(message(old+".addFirst("+i+")", gist_string(comp), gist_string(deque)));
+					break;
+				}
+				if (comp.size() != deque.size()) {
+					out.add(message(old+".addFirst("+i+")\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
+					break;
+				}
+			} catch (Exception e) {
+				out.add(message(old+".addFirst("+i+")", gist_string(comp), e.toString()));
+				break;
+			}
+		}
+
+		// removing from front without wrap
+
+		for (int i = 0; i < 1000; i++) {
+			String old = gist_string(deque);
+			try {
+				deque.removeFirst();
+				comp.removeFirst();
+				if (!edge_check(comp, deque)) {
+					out.add(message(old+".removeFirst()", gist_string(comp), gist_string(deque)));
+					break;
+				}
+				if (comp.size() != deque.size()) {
+					out.add(message(old+".removeFirst()\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
+					break;
+				}
+			} catch (Exception e) {
+				out.add(message(old+".removeFirst()", gist_string(comp), e.toString()));
+				break;
+			}
+		}
+
+		// stepping forwards -- this should place us somewhere in the middle of the data array
+
+		deque = new MyDeque<>();
+		comp = new ArrayDeque<>();
+
+		for (int i = 0; i < 500; i++) {
+			String old = gist_string(deque);
+			try {
+				deque.addLast(i);
+				comp.addLast(i);
+				if (!edge_check(comp, deque)) {
+					out.add(message(old+".addLast("+i+")", gist_string(comp), gist_string(deque)));
+					break;
+				}
+				if (comp.size() != deque.size()) {
+					out.add(message(old+".addLast("+i+")\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
+					break;
+				}
+			} catch (Exception e) {
+				out.add(message(old+".addLast("+i+")", gist_string(comp), e.toString()));
+				break;
+			}
+			old = gist_string(deque);
+			try {
+				System.out.println(deque);
+				deque.removeFirst();
+				comp.removeFirst();
+				System.out.println(deque);
+				if (!edge_check(comp, deque)) {
+					out.add(message(old+".removeFirst()", gist_string(comp), gist_string(deque)));
+					break;
+				}
+				if (comp.size() != deque.size()) {
+					out.add(message(old+".removeFirst()\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
+					break;
+				}
+			} catch (Exception e) {
+				out.add(message(old+".removeFirst()", gist_string(comp), e.toString()));
+				break;
+			}
+		}
+
 		// // adding forward to meet at middle
 		//
 		// for (int i = 0; i < 1000; i++) {
