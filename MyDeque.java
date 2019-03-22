@@ -77,7 +77,7 @@ public class MyDeque<E>{
     if (element == null){
       throw new NullPointerException();
     }
-    if (end - start == size){
+    if (end == size || end == start){
       resize();
     }
     if (start == 0){
@@ -96,11 +96,16 @@ public class MyDeque<E>{
     if (element == null){
       throw new NullPointerException();
     }
-    if (end == size || end == start){
-      resize();
+    if (size() == 0){
+      end++;
+      data[end-1] = element;
+    } else {
+      if (end == size || end == start){
+        resize();
+      }
+      end++;
+      data[end-1] = element;
     }
-    end++;
-    data[end-1] = element;
   }
 
   public E removeFirst(){
@@ -109,7 +114,7 @@ public class MyDeque<E>{
     }
     E temp = data[start];
     data[start] = null;
-    if (start <= size - 1){
+    if (start < size - 1){
       start++;
     } else {
       start = 0;
