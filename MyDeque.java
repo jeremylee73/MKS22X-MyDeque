@@ -1,7 +1,7 @@
 import java.util.*;
 public class MyDeque<E>{
   private E[] data;
-  private int size, start, end;
+  public int size, start, end;
 
   @SuppressWarnings("unchecked")
   public MyDeque(){
@@ -24,7 +24,7 @@ public class MyDeque<E>{
     if (end >= start){
       return end - start;
     }
-    return (size - start) + end;
+    return (size - start) + end - 1;
   }
 
   public String toString(){
@@ -114,7 +114,7 @@ public class MyDeque<E>{
     }
     E temp = data[start];
     data[start] = null;
-    if (start < size - 1){
+    if (start < size){
       start++;
     } else {
       start = 0;

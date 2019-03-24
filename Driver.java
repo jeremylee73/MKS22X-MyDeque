@@ -213,10 +213,8 @@ public class Driver {
 			}
 			old = gist_string(deque);
 			try {
-				System.out.println(deque);
 				deque.removeFirst();
 				comp.removeFirst();
-				System.out.println(deque);
 				if (!edge_check(comp, deque)) {
 					out.add(message(old+".removeFirst()", gist_string(comp), gist_string(deque)));
 					break;
