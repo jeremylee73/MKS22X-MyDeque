@@ -67,9 +67,8 @@ public class MyDeque<E>{
         count++;
       }
     }
-    int interval = size();
     start = 0;
-    end = start + interval;
+    end = size();
     size = size * 2;
     data = newData;
   }
@@ -105,13 +104,8 @@ public class MyDeque<E>{
     if (size() == size){
       resize();
     }
-    if (end == size - 1){
-      data[end] = element;
-      end = 0;
-    } else {
-      data[end] = element;
-      end++;
-    }
+    data[end] = element;
+    end++;
   }
 
   public E removeFirst(){
@@ -156,8 +150,11 @@ public class MyDeque<E>{
     MyDeque<Integer> test = new MyDeque<Integer>();
     System.out.println(test);
     test.addFirst(2);
-    for (int i=0; i<10; i++){
+    for (int i=0; i<100; i++){
       test.addLast(3);
+    }
+    for (int i=0; i<100; i++){
+      test.removeFirst();
     }
     System.out.println("Start:"+test.start+" End:"+test.end);
     System.out.println(test);
