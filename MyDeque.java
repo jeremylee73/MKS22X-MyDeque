@@ -104,8 +104,13 @@ public class MyDeque<E>{
     if (size() == size){
       resize();
     }
-    data[end] = element;
-    end++;
+    if (end == size){
+      data[0] = element;
+      end = 1;
+    } else {
+      data[end] = element;
+      end++;
+    }
   }
 
   public E removeFirst(){
@@ -114,7 +119,12 @@ public class MyDeque<E>{
     }
     E temp = data[start];
     data[start] = null;
-    if (start < size){
+    if (start == end - 1){
+      start = 0;
+      end = 0;
+      return temp;
+    }
+    if (start < size - 1){
       start++;
     } else {
       start = 0;
