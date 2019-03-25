@@ -9,11 +9,21 @@ public class Calculator{
         if (vals[i] != "*" && vals[i] != "/" && vals[i] != "+" && vals[i] != "-"){
           deque.addLast(Double.parseDouble(vals[i]));
         } else {
+          Double newVal;
+          Double v1 = deque.removeLast();
+          Double v2 = deque.removeLast();
           if (vals[i] == "*"){
-
+            newVal = v1 * v2;
+          } else if (vals[i] == "/"){
+            newVal = v1 / v2;
+          } else if (vals[i] == "-"){
+            newVal = v1 * v2;
+          } else {
+            newVal = v1 + v2;
           }
+          deque.addLast(newVal);
         }
       }
-      return 0;
+      return deque.removeLast();
     }
 }
