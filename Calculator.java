@@ -10,14 +10,14 @@ public class Calculator{
           deque.addLast(Double.parseDouble(vals[i]));
         } else {
           Double newVal;
-          Double v1 = deque.removeLast();
           Double v2 = deque.removeLast();
-          if (vals[i] == "*"){
+          Double v1 = deque.removeLast();
+          if (vals[i].equals("*")){
             newVal = v1 * v2;
-          } else if (vals[i] == "/"){
+          } else if (vals[i].equals("/")){
             newVal = v1 / v2;
-          } else if (vals[i] == "-"){
-            newVal = v1 * v2;
+          } else if (vals[i].equals("-")){
+            newVal = v1 - v2;
           } else {
             newVal = v1 + v2;
           }
@@ -28,6 +28,7 @@ public class Calculator{
     }
 
     public static void main(String[] args){
+      System.out.println(eval("10 2.0 /")); // 5.0
       System.out.println(eval("10 2.0 +")); // 12.0
       System.out.println(eval("11 3 - 4 + 2.5 *")); // 30.0
       System.out.println(eval("8 2 + 99 9 - * 2 + 9 -")); // 893.0
