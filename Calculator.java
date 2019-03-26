@@ -6,7 +6,7 @@ public class Calculator{
       String[] vals = s.split(" ", -1);
       MyDeque<Double> deque = new MyDeque<Double>();
       for (int i=0; i<vals.length; i++){
-        if (!(vals[i].equals("*")) && !(vals[i].equals("/")) && !(vals[i].equals("+")) && !(vals[i].equals("-"))){
+        if (!(vals[i].equals("*")) && !(vals[i].equals("/")) && !(vals[i].equals("+")) && !(vals[i].equals("-")) && !(vals[i].equals("%"))){
           deque.addLast(Double.parseDouble(vals[i]));
         } else {
           Double newVal;
@@ -18,7 +18,9 @@ public class Calculator{
             newVal = v1 / v2;
           } else if (vals[i].equals("-")){
             newVal = v1 - v2;
-          } else {
+          } else if (vals[i].equals("%")){
+            newVal = v1 % v2;
+          } else{
             newVal = v1 + v2;
           }
           deque.addLast(newVal);
